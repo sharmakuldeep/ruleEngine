@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>ch.maxant</groupId>
+		<artifactId>rules-parent</artifactId>
+		<version>2.4.1</version>
+		<relativePath>../rules-parent</relativePath>
+	</parent>
+	<properties>
+		<mvel2-version>2.4.0.Final</mvel2-version>
+	</properties>
+	<artifactId>rules</artifactId>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<!-- added for expression language used by the rule engine -->
+			<groupId>org.mvel</groupId>
+			<artifactId>mvel2</artifactId>
+			<version>${mvel2-version}</version>
+		</dependency>
+		<dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<!-- build a jar with the tests in it, so that rules-scala can depend 
+								on test classes from this module. -->
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
